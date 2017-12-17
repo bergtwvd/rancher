@@ -15,7 +15,7 @@ services:
   hostname: mak
   environment:
   - DISPLAY=$XSERVER:0
-  - LRC_MINSLEEP=30
+#  - LRC_MINSLEEP=$LRC_MINSLEEP
   depends_on: ["crc"]
   labels:
   - "io.rancher.container.mac_address=8C:70:5A:0B:58:7E"
