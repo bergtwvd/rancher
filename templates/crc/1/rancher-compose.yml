@@ -4,8 +4,8 @@
   description: "description"
   questions:
     - variable: "XSERVER"
-      label: "DNS name of the XServer to be used"
-      description: "The format for the DNS name is <servicename>.<stack>"
+      label: "DNS name of the XServer to be used."
+      description: "The format for the DNS name is '<servicename>.<stack>'."
       type: "string"
       required: true
       default: xserver.xserver
@@ -16,8 +16,8 @@
       required: false
       default: "true"
     - variable: "CRC_BOOSTERADDRESS"
-      label: "Start in Booster Mode, using the given booster host address and port number. Default is Direct Mode. Optional."
-      description: "The format for the Booster address is <booster host>:<booster port>."
+      label: "Start in Booster Mode, using the given booster host address and port number. If left empty start in Direct Mode."
+      description: "The format for the Booster address is '<booster host>:<booster port>'."
       type: "string"
       required: false
       default: ""

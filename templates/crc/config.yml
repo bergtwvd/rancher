@@ -2,5 +2,5 @@ name: Pitch CRC
 description: |
  This image is the Pitch CRC (Central RTI Component). 
 version: v1
-category: Applications
+category: Pitch
 maintainer: Tom van den Berg

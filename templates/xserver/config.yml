@@ -2,5 +2,5 @@ name: XServer
 description: |
  This image is an X Server for use by any X11 based application. The user can connect to the X Server with a VNC Client or with any modern webbrowser that supports websockets. Simultanous connections from multiple clients are supported. Optionally a password can be configured that the user must supply to connect.
 version: v1
-category: Applications
+category: Library
 maintainer: Tom van den Berg
