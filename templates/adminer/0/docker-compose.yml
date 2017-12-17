@@ -1,3 +1,5 @@
 adminer:
-  image: 'clue/adminer:latest'
+  image: 'app-docker136.hex.tno.nl:443/library/xserver'
+  ports:
+  - "443:8080"
   restart: on-failure
