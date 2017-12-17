@@ -2,6 +2,13 @@
   name: "Viking18 AIS"
   version: "v1"
   description: "AIS"
-
+  questions:
+    - variable: "XSERVER"
+      label: "DNS name of the XServer to be used."
+      description: "The format for the DNS name is '<servicename>.<stack>'."
+      type: "string"
+      required: true
+      default: xserver.xserver
+      
 crc:
   scale: 1
