@@ -6,6 +6,8 @@ services:
   mac_address: 00:18:8B:0D:4F:0B
   environment:
   - DISPLAY=$XSERVER:0
+  labels:
+  - io.rancher.container.mac_address="00:18:8B:0D:4F:0B"
   
  vtg:
   image: app-docker136.hex.tno.nl:443/viking18/vrfvtg
