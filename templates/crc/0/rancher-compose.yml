@@ -1,0 +1,13 @@
+.catalog:
+  name: "crc"
+  version: "v1"
+  description: "description"
+  questions:
+    - variable: "XSERVER"
+      label: "DNS name of the XServer to be used"
+      description: "The format for the DNS name is <servicename>.<stack>"
+      type: "string"
+      required: true
+
+crc:
+  scale: 1
