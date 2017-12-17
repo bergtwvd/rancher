@@ -1,4 +1,4 @@
-xserver:
+adminer:
   image: 'app-docker136.hex.tno.nl:443/library/xserver'
   ports:
   - "443:8080"
