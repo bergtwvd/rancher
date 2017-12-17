@@ -1,0 +1,6 @@
+name: Viking18 AIS
+description: |
+ AIS Generation service.
+version: v1
+category: Viking18
+maintainer: Tom van den Berg

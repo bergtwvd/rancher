@@ -1,0 +1,39 @@
+version: '2'
+
+services:
+ crc:
+  image: app-docker136.hex.tno.nl:443/pitch/crc:5.3.2.1L
+  mac_address: 00:18:8B:0D:4F:0B
+  environment:
+  - DISPLAY=$XSERVER:0
+  
+ vtg:
+  image: app-docker136.hex.tno.nl:443/viking18/vrfvtg
+  mac_address: 8C:70:5A:0B:58:7E
+  hostname: mak
+  environment:
+  - DISPLAY=$XSERVER:0
+  depends_on: ["crc"]
+
+ nmea:
+  image: app-docker136.hex.tno.nl:443/viking18/nmea
+  environment:
+  - PITCH_CRCADDRESS=crc:8989
+  ports:
+  - "443:9001"
+  depends_on: ["crc"]
+
+ kml:
+  image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:pi
+  command: -f KMLServer -iconurl http://icon:80/app6b-symbolpng
+  depends_on: ["crc","icon"]
+
+ icon:
+  image: app-docker136.hex.tno.nl:443/msaas-dnk/disenumerationsymbolservice:2.2
+
+ ge:
+  image: app-docker136.hex.tno.nl:443/library/ge
+  command: -f -r 10 Baltic http://kml:8080/kmlserver/entities 
+  environment:
+  - DISPLAY=$XSERVER:0
+  depends_on: ["kml"]
