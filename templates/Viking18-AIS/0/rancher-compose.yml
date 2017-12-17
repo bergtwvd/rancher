@@ -1,7 +1,0 @@
-.catalog:
-  name: "Viking18 AIS"
-  version: "v1"
-  description: "AIS"
-
-crc:
-  scale: 1
