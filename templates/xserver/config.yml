@@ -1,0 +1,7 @@
+name:  XServer
+description: |
+  XServer display.
+version: v1
+category: Applications
+maintainer: Tom van den Berg
+
