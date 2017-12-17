@@ -1,12 +1,12 @@
 xserver:
-  image: 'app-docker136.hex.tno.nl:443/library/xserver'
+  image: app-docker136.hex.tno.nl:443/library/xserver
   ports:
   - "443:8080"
   restart: on-failure
 
 crc:
- image: app-docker136.hex.tno.nl:443/pitch/crc:5.3.2.1L
- mac_address: 00:18:8B:0D:4F:0B
- environment:
-  DISPLAY: xserver
+  image: app-docker136.hex.tno.nl:443/pitch/crc:5.3.2.1L
+  mac_address: 00:18:8B:0D:4F:0B
+  environment:
+    DISPLAY: xserver
  
