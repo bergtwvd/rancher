@@ -9,6 +9,16 @@
       type: "string"
       required: true
       default: xserver.xserver
-
-crc:
+    - variable: "CRC_REJECT_MISMATCHED_VERSIONS"
+      label: "Reject LRCs with a miss-matching version."
+      description: "This a a bolean value. Default is true."
+      type: "boolean"
+      required: false
+      default: "true"
+    - variable: "CRC_BOOSTERADDRESS"
+      label: "Start in Booster Mode, using the given booster host address and port number. Default is Direct Mode. Optional."
+      description: "The format for the Booster address is <booster host>:<booster port>."
+      type: "string"
+      required: false
+      default: ""
   scale: 1
