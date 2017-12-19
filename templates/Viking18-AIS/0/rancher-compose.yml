@@ -1,20 +1,14 @@
 .catalog:
   name: "Viking18 AIS"
-  version: "v1"
+  version: "v1 - with GE"
   description: "AIS"
   questions:
     - variable: "XSERVER"
-      label: "DNS name of the XServer to be used."
-      description: "The format for the DNS name is '<servicename>.<stack>'."
+      label: "The address of the XServer to be used."
+      description: "The format for the Rancher DNS name is '<servicename>.<stack>'."
       type: "string"
       required: true
       default: xserver.xserver
-    - variable: "LRC_MINSLEEP"
-      label: "Sleep this amount of seconds once CRC is detected, before starting the federate application."
-      description: "Amount in seconds. Default is zero."
-      type: "int"
-      required: false
-#      default: 0
 
 crc:
   scale: 1
