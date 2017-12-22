@@ -3,6 +3,6 @@ version: '2'
 services:
  icon:
   image: app-docker136.hex.tno.nl:443/msaas-dnk/disenumerationsymbolservice:2.2
- ports:
- - "9001:80"
+  ports:
+  - "9001:80"
  
