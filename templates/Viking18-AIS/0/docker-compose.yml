@@ -32,6 +32,8 @@ services:
   image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:pi
   command: -f KMLServer -iconurl http://icon:80/app6b-symbolpng
   depends_on: ["crc","icon"]
+  ports:
+  - "8080:8080"
 
  icon:
   image: app-docker136.hex.tno.nl:443/msaas-dnk/disenumerationsymbolservice:2.2
