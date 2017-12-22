@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+ ge:
+  image: app-docker136.hex.tno.nl:443/library/ge
+  environment:
+  - DISPLAY=xserver:0
+
+ xserver:
+  image: app-docker136.hex.tno.nl:443/library/xserver
+  ports:
+  - "443:8080"
+  

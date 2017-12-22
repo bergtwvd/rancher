@@ -1,0 +1,6 @@
+name: Google Earth
+description: |
+ Google Earth viewer.
+version: v1
+category: Viking18
+maintainer: Tom van den Berg
