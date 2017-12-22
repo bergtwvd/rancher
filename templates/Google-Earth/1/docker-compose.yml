@@ -9,6 +9,7 @@ services:
   - GE_PLACENAME=${GE_PLACENAME}
   - GE_REFRESHTIME=${GE_REFRESHTIME}
   - GE_FLYTOVIEW=${GE_FLYTOVIEW}
+  labels: io.rancher.container.pull_image: always
 
  xserver:
   image: app-docker136.hex.tno.nl:443/library/xserver
