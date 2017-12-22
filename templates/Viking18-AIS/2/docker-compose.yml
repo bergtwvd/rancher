@@ -31,6 +31,6 @@ services:
  kml:
   image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:pi
   command: -f KMLServer -iconurl $ICONURL
-  depends_on: ["crc","icon"]
+  depends_on: ["crc"]
   ports:
   - "8080:8080"
