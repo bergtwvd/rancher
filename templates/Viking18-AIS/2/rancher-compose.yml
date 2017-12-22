@@ -9,9 +9,20 @@
       type: "string"
       required: true
       default: xserver.xserver
-    - variable: "ICONURL"
+    - variable: "ICONSRV"
+      label: "The address of iconserver."
+      description: "Service name"
+      type: "service"
+      required: true
+    - variable: "ICONPORT"
+      label: "The port of iconserver."
+      description: "Portnumber"
+      type: "int"
+      required: true
+      default: 80
+    - variable: "ICONPATH"
       label: "The address of the iconserver to be used."
       description: "Iconserver URL: http://...."
       type: "string"
       required: true
-      default: http://icon:80/app6b-symbolpng
+      default: /app6b-symbolpng
