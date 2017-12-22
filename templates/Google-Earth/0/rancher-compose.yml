@@ -3,12 +3,6 @@
   version: "v1"
   description: "Googe Earth"
   questions:
-    - variable: "XSERVER"
-      label: "The address of the XServer to be used."
-      description: "The format for the Rancher DNS name is '<servicename>.<stack>'."
-      type: "string"
-      required: true
-      default: xserver.xserver
     - variable: "GE_LINK"
       label: "Google Earth link"
       description: "The address of the KML Server: http://..."
@@ -33,4 +27,3 @@
       type: "boolean"
       required: false
       default: false
-
