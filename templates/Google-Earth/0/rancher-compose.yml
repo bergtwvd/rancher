@@ -24,6 +24,6 @@
     - variable: "GE_FLYTOVIEW"
       label: "Google Earth fly to view indicator"
       description: "Fly to view for the Google Earth link"
-      type: "boolean"
+      type: "int"
       required: false
-      default: false
+      default: 0
