@@ -1,6 +1,6 @@
 .catalog:
   name: "Google Earth"
-  version: "v1"
+  version: "v2"
   description: "Googe Earth"
   questions:
     - variable: "GE_LINK"
