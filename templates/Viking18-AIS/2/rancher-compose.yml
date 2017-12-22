@@ -1,0 +1,17 @@
+.catalog:
+  name: "Viking18 AIS"
+  version: "v3 - extern GE"
+  description: "AIS"
+  questions:
+    - variable: "XSERVER"
+      label: "The address of the XServer to be used."
+      description: "The format for the Rancher DNS name is '<servicename>.<stack>'."
+      type: "string"
+      required: true
+      default: xserver.xserver
+    - variable: "ICONURL"
+      label: "The address of the iconserver to be used."
+      description: "Iconserver URL: http://...."
+      type: "string"
+      required: true
+      default: http://icon:80/app6b-symbolpng

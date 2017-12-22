@@ -30,15 +30,7 @@ services:
 
  kml:
   image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:pi
-  command: -f KMLServer -iconurl http://icon:80/app6b-symbolpng
+  command: -f KMLServer -iconurl $ICONURL
   depends_on: ["crc","icon"]
-
- icon:
-  image: app-docker136.hex.tno.nl:443/msaas-dnk/disenumerationsymbolservice:2.2
-
- ge:
-  image: app-docker136.hex.tno.nl:443/library/ge
-  command: -f -r 10 Baltic http://kml:8080/kmlserver/entities 
-  environment:
-  - DISPLAY=$XSERVER:0
-  depends_on: ["kml"]
+  ports:
+  - "8080:8080"
