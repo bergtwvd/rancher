@@ -16,7 +16,6 @@ services:
   depends_on: ["crc"]
   labels:
   - "io.rancher.container.mac_address=8C:70:5A:0B:58:7E"
-  - "io.rancher.container.hostname_override: mak"
 
  xserver:
   image: app-docker136.hex.tno.nl:443/library/xserver
