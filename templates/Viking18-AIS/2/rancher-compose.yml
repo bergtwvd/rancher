@@ -12,8 +12,9 @@
     - variable: "ICONSRV"
       label: "The address of iconserver."
       description: "Service name"
-      type: "service"
+      type: "string"
       required: true
+      default: iserver.iserver
     - variable: "ICONPORT"
       label: "The port of iconserver."
       description: "Portnumber"
