@@ -5,7 +5,7 @@
   questions:
     - variable: "GE_LINK"
       label: "Google Earth link"
-      description: "The address of the KML Server: http://..."
+      description: "The address of the KML Server, e.g.: http://kml.<stackname>/kmlserver/entities"
       type: "string"
       required: true
       default: http://kml:8080/kmlserver/entities
