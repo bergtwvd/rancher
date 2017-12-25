@@ -1,6 +1,6 @@
-name: Icon Service
+name: Icon Server
 description: |
- Icon Service.
+ This service translates Distributed Interactive Simulation (DIS) enumeration values to APP6(B) symbol codes and unit symbols. It also translates to an APP6(C) 20 digit description.
 version: v1
-category: General
+category: Library
 maintainer: Tom van den Berg
