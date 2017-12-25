@@ -4,26 +4,26 @@
   description: "AIS"
   questions:
     - variable: "XSERVER"
-      label: "The address of the XServer to be used."
+      label: "XServer hostname"
       description: "The format for the Rancher DNS name is '<servicename>.<stack>'."
       type: "string"
       required: true
       default: xserver.xserver
     - variable: "ICONSRV"
-      label: "The address of iconserver."
-      description: "Service name"
+      label: "Icon server hostname"
+      description: "The format for the Rancher DNS name is '<servicename>.<stack>'."
       type: "string"
       required: true
       default: iserver.iserver
     - variable: "ICONPORT"
-      label: "The port of iconserver."
+      label: "Icon server port"
       description: "Portnumber"
       type: "int"
       required: true
       default: 80
     - variable: "ICONPATH"
-      label: "The address of the iconserver to be used."
-      description: "Iconserver URL: http://...."
+      label: "Icon server resource path prefix"
+      description: "Iconserver URL: http://<hostname>:<port>/<prefix>"
       type: "string"
       required: true
       default: /app6b-symbolpng
