@@ -29,8 +29,8 @@ services:
 
  kml:
   image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:pi
-#  command: -f KMLServer -iconurl http://${ICONSRV}:${ICONPORT}${ICONPATH}
-  command: -f KMLServer -iconurl /kmlserver/entities
+  command: -f KMLServer -iconurl http://${ICONSRV}:${ICONPORT}${ICONPATH}
+# command: -f KMLServer -iconurl /kmlserver/entities
   depends_on: ["crc"]
   ports:
   - "8080:8080"
