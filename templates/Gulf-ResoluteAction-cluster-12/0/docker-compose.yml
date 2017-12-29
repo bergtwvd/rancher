@@ -6,7 +6,7 @@ services:
  diswebgw:
   image: app-docker136.hex.tno.nl:443/epic/dis-web-gw:1.2.1
   labels:
-   io.rancher.scheduler.affinity:container_label: io.rancher.stack_service.name=$${stack_name}/dis
+    io.rancher.scheduler.affinity:container_label_soft: io.rancher.stack_service.name=$${stack_name}/dis
   depends_on: ["dis"]
 
  epic:
@@ -21,7 +21,7 @@ services:
   environment:
   - DISPLAY=$XSERVER:0
   labels:
-  - "io.rancher.container.mac_address=00:18:8B:0D:4F:0B"
+    io.rancher.container.mac_address: 00:18:8B:0D:4F:0B
   
  dis:
   image: app-docker136.hex.tno.nl:443/pitch/dis:2.6.0L
@@ -29,7 +29,8 @@ services:
   environment:
   - DISPLAY=$XSERVER:0
   labels:
-  - "io.rancher.container.mac_address=00:18:8B:0D:4F:1B"
+    io.rancher.container.mac_address=00:18:8B:0D:4F:1B
+    io.rancher.scheduler.affinity:container_label_soft: io.rancher.stack_service.name=$${stack_name}/diswengw
   depends_on: ["crc"]
 
  shipsim:
@@ -48,7 +49,7 @@ services:
   environment:
   - DISPLAY=$XSERVER:0
   labels:
-  - "io.rancher.container.mac_address=8C:70:5A:0B:58:7E"
+    io.rancher.container.mac_address=8C:70:5A:0B:58:7E
   depends_on: ["crc"]
 
 # General components
@@ -75,5 +76,5 @@ services:
   - SERVER0_LOCATION0="/dis/     proxy_pass http://diswebgw:8282/ upgrade"
   - SERVER0_LOCATION1="/         proxy_pass http://epic:7070"
   labels:
-  - "io.rancher.scheduler.affinity:host_label=node=app-docker12.hex.tno.nl"
+   io.rancher.scheduler.affinity:host_label: node=app-docker12.hex.tno.nl
   depends_on: ["diswebgw","epic"]
