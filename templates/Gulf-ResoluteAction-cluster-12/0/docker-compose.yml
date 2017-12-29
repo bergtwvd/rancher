@@ -5,8 +5,10 @@ services:
 # EPIC components
  diswebgw:
   image: app-docker136.hex.tno.nl:443/epic/dis-web-gw:1.2.1
-  labels:
-    io.rancher.scheduler.affinity:container_label_soft: io.rancher.stack_service.name=$${stack_name}/dis
+#  labels:
+#    io.rancher.scheduler.affinity:container_label_soft: io.rancher.stack_service.name=$${stack_name}/dis
+  links:
+  - dis
   depends_on: ["dis"]
 
  epic:
@@ -30,7 +32,6 @@ services:
   - DISPLAY=$XSERVER:0
   labels:
     io.rancher.container.mac_address: 00:18:8B:0D:4F:1B
-    io.rancher.scheduler.affinity:container_label_soft: io.rancher.stack_service.name=$${stack_name}/diswengw
   depends_on: ["crc"]
 
  shipsim:
