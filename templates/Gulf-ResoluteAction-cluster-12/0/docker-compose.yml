@@ -7,11 +7,13 @@ services:
   image: app-docker136.hex.tno.nl:443/epic/dis-web-gw:1.2.1
   labels:
     io.rancher.scheduler.affinity:host_label: node=${ADVERTISED_HOST}
+  depends_on: ["dis"]
 
  epic:
   image: app-docker136.hex.tno.nl:443/epic/epic:dis
   environment:
   - dis_gw_url=wss://${ADVERTISED_HOST}/dis/
+  depends_on: ["diswebgw"]
 
 # HLA components
  crc:
@@ -29,14 +31,17 @@ services:
   labels:
     io.rancher.container.mac_address: 00:18:8B:0D:4F:1B
     io.rancher.scheduler.affinity:host_label: node=${ADVERTISED_HOST}
+  depends_on: ["crc"]
 
  shipsim:
   image: app-docker136.hex.tno.nl:443/msaas-aus/shipsim:pi
   command: --scalable
+  depends_on: ["crc"]
 
  kml:
   image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:pi
   command: -f KMLServer -iconurl http://icon:80/app6b-symbolpng
+  depends_on: ["crc", "icon"]
 
  vrf:
   image: app-docker136.hex.tno.nl:443/msaas-nld/vrf:pi
@@ -45,10 +50,14 @@ services:
   - DISPLAY=$XSERVER:0
   labels:
     io.rancher.container.mac_address: 8C:70:5A:0B:58:7E
+  depends_on: ["crc"]
 
 # General components
  icon:
   image: app-docker136.hex.tno.nl:443/msaas-dnk/disenumerationsymbolservice:2.2
+
+ xserver:
+  image: app-docker136.hex.tno.nl:443/library/xserver
 
  ge:
   image: app-docker136.hex.tno.nl:443/library/ge
@@ -58,15 +67,18 @@ services:
   - GE_PLACENAME=Gulf
   - GE_REFRESHTIME=10
   - GE_FLYTOVIEW=1
+  depends_on: ["kml"]
 
  proxy:
   image: app-docker136.hex.tno.nl:443/library/proxy
-  command: -u user -p password -k
+  command: -k
   ports:
   - "443:443"
   environment:
-  - SERVER0=localhost 443 ssl basic_auth
+  - SERVER0=localhost 443 ssl
   - SERVER0_LOCATION0="/dis/     proxy_pass http://diswebgw:8282/ upgrade"
-  - SERVER0_LOCATION1="/         proxy_pass http://epic:7070"
+  - SERVER0_LOCATION1="/xserver/ proxy_pass http://xserver:8080/ upgrade"
+  - SERVER0_LOCATION2="/         proxy_pass http://epic:7070"
   labels:
     io.rancher.scheduler.affinity:host_label: node=${ADVERTISED_HOST}
+  depends_on: ["diswebgw","xserver","epic"]
