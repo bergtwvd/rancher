@@ -5,10 +5,8 @@ services:
 # EPIC components
  diswebgw:
   image: app-docker136.hex.tno.nl:443/epic/dis-web-gw:1.2.1
-#  labels:
-#    io.rancher.scheduler.affinity:container_label_soft: io.rancher.stack_service.name=$${stack_name}/dis
-  links:
-  - dis
+  labels:
+    io.rancher.scheduler.affinity:container: dis
   depends_on: ["dis"]
 
  epic:
