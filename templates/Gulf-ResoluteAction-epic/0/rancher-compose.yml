@@ -5,12 +5,12 @@
   questions:
     - variable: "XSERVER"
       label: "DNS name of the XServer to be used."
-      description: "The format for the DNS name is '<servicename>.<stack>'."
+      description: "The format for the Rancher DNS name is '<servicename>.<stack>'."
       type: "string"
       required: true
       default: xserver.xserver
     - variable: "ADVERTISED_HOST"
-      label: "Full hostname wheren EPIC Service is advertised."
+      label: "Full hostname where EPIC Service will be advertised."
       description: "E.g. app-docker12.hex.tno.nl"
       type: "string"
       required: true
