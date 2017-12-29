@@ -5,8 +5,8 @@ services:
 # EPIC components
  diswebgw:
   image: app-docker136.hex.tno.nl:443/epic/dis-web-gw:1.2.1
-#  labels:
-#  - "io.rancher.scheduler.affinity:container_label: io.rancher.stack_service.name=dis"
+  labels:
+  - "io.rancher.scheduler.affinity:container_label: io.rancher.stack_service.name=dis"
   depends_on: ["dis"]
 
  epic:
@@ -18,18 +18,19 @@ services:
 # HLA components
  crc:
   image: app-docker136.hex.tno.nl:443/pitch/crc:5.3.2.1L
-  mac_address: 00:18:8B:0D:4F:0B
   environment:
   - DISPLAY=$XSERVER:0
-
+  labels:
+  - "io.rancher.container.mac_address=00:18:8B:0D:4F:0B"
+  
  dis:
   image: app-docker136.hex.tno.nl:443/pitch/dis:2.6.0L
   command: -auto
-  mac_address: 00:18:8B:0D:4F:1B
   environment:
   - DISPLAY=$XSERVER:0
   labels:
   - "io.rancher.scheduler.affinity:host_label: node=app-docker12.hex.tno.nl"
+  - "io.rancher.container.mac_address=00:18:8B:0D:4F:1B"
   depends_on: ["crc"]
 
  shipsim:
@@ -44,10 +45,11 @@ services:
 
  vrf:
   image: app-docker136.hex.tno.nl:443/msaas-nld/vrf:pi
-  mac_address: 8C:70:5A:0B:58:7E
   hostname: mak
   environment:
   - DISPLAY=$XSERVER:0
+  labels:
+  - "io.rancher.container.mac_address=8C:70:5A:0B:58:7E"
   depends_on: ["crc"]
 
 # General components
@@ -66,14 +68,11 @@ services:
 
  proxy:
   image: app-docker136.hex.tno.nl:443/library/proxy
-  command: -u user -p password
+  command: -u user -p password -k
   ports:
   - "443:443"
   environment:
   - SERVER0=localhost 443 ssl basic_auth
   - SERVER0_LOCATION0="/dis/     proxy_pass http://diswebgw:8282/ upgrade"
   - SERVER0_LOCATION1="/         proxy_pass http://epic:7070"
-  volumes:
-  - $AUTH_DIR/domain.crt:/etc/nginx/conf.d/domain.crt
-  - $AUTH_DIR/domain.key:/etc/nginx/conf.d/domain.key
   depends_on: ["diswebgw","epic"]
