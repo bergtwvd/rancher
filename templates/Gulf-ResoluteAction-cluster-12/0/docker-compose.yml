@@ -1,0 +1,79 @@
+version: '3'
+
+services:
+
+# EPIC components
+ diswebgw:
+  image: app-docker136.hex.tno.nl:443/epic/dis-web-gw:1.2.1
+  labels:
+  - "io.rancher.scheduler.affinity:container_label: io.rancher.stack_service.name=$${stack_name}/dis"
+  depends_on: ["dis"]
+
+ epic:
+  image: app-docker136.hex.tno.nl:443/epic/epic:dis
+  environment:
+  - dis_gw_url=wss://app-docker12.hex.tno.nl/dis/
+  depends_on: ["diswebgw"]
+
+# HLA components
+ crc:
+  image: app-docker136.hex.tno.nl:443/pitch/crc:5.3.2.1L
+  mac_address: 00:18:8B:0D:4F:0B
+  environment:
+  - DISPLAY=$XSERVER:0
+
+ dis:
+  image: app-docker136.hex.tno.nl:443/pitch/dis:2.6.0L
+  command: -auto
+  mac_address: 00:18:8B:0D:4F:1B
+  environment:
+  - DISPLAY=$XSERVER:0
+  labels:
+  - "io.rancher.scheduler.affinity:host_label: node=app-docker12.hex.tno.nl"
+  depends_on: ["crc"]
+
+ shipsim:
+  image: app-docker136.hex.tno.nl:443/msaas-aus/shipsim:pi
+  command: --scalable
+  depends_on: ["crc"]
+
+ kml:
+  image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:pi
+  command: -f KMLServer -iconurl http://icon:80/app6b-symbolpng
+  depends_on: ["crc"]
+
+ vrf:
+  image: app-docker136.hex.tno.nl:443/msaas-nld/vrf:pi
+  mac_address: 8C:70:5A:0B:58:7E
+  hostname: mak
+  environment:
+  - DISPLAY=$XSERVER:0
+  depends_on: ["crc"]
+
+# General components
+ icon:
+  image: app-docker136.hex.tno.nl:443/msaas-dnk/disenumerationsymbolservice:2.2
+
+ ge:
+  image: app-docker136.hex.tno.nl:443/library/ge
+  environment:
+  - DISPLAY=$XSERVER:0
+  - GE_LINK=http://kml:8080/kmlserver/entities
+  - GE_PLACENAME=Gulf
+  - GE_REFRESHTIME=10
+  - GE_FLYTOVIEW=1
+  depends_on: ["kml"]
+
+ proxy:
+  image: app-docker136.hex.tno.nl:443/library/proxy
+  command: -u user -p password
+  ports:
+  - "443:443"
+  environment:
+  - SERVER0=localhost 443 ssl basic_auth
+  - SERVER0_LOCATION0="/dis/     proxy_pass http://diswebgw:8282/ upgrade"
+  - SERVER0_LOCATION1="/         proxy_pass http://epic:7070"
+  volumes:
+  - $AUTH_DIR/domain.crt:/etc/nginx/conf.d/domain.crt
+  - $AUTH_DIR/domain.key:/etc/nginx/conf.d/domain.key
+  depends_on: ["diswebgw","epic"]
