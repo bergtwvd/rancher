@@ -28,6 +28,7 @@ services:
   command: -auto
   environment:
   - DISPLAY=$XSERVER:0
+  - PITCH_CRCADDRESS=${CRC}:8989
   labels:
     io.rancher.container.mac_address: 00:18:8B:0D:4F:1B
     io.rancher.scheduler.affinity:host_label: node=${ADVERTISED_HOST}
@@ -36,11 +37,15 @@ services:
  shipsim:
   image: app-docker136.hex.tno.nl:443/msaas-aus/shipsim:pi
   command: --scalable
+  environment:
+  - PITCH_CRCADDRESS=${CRC}:8989
   depends_on: ["crc"]
 
  kml:
   image: app-docker136.hex.tno.nl:443/msaas-nld/kmlserver:pi
   command: -f KMLServer -iconurl http://icon:80/app6b-symbolpng
+  environment:
+  - PITCH_CRCADDRESS=${CRC}:8989
   depends_on: ["crc", "icon"]
 
  vrf:
@@ -48,6 +53,7 @@ services:
   hostname: mak
   environment:
   - DISPLAY=$XSERVER:0
+  - PITCH_CRCADDRESS=${CRC}:8989
   labels:
     io.rancher.container.mac_address: 8C:70:5A:0B:58:7E
   depends_on: ["crc"]
