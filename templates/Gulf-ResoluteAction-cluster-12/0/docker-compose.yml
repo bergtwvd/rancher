@@ -29,7 +29,7 @@ services:
   environment:
   - DISPLAY=$XSERVER:0
   labels:
-    io.rancher.container.mac_address=00:18:8B:0D:4F:1B
+    io.rancher.container.mac_address: 00:18:8B:0D:4F:1B
     io.rancher.scheduler.affinity:container_label_soft: io.rancher.stack_service.name=$${stack_name}/diswengw
   depends_on: ["crc"]
 
@@ -49,7 +49,7 @@ services:
   environment:
   - DISPLAY=$XSERVER:0
   labels:
-    io.rancher.container.mac_address=8C:70:5A:0B:58:7E
+    io.rancher.container.mac_address: 8C:70:5A:0B:58:7E
   depends_on: ["crc"]
 
 # General components
