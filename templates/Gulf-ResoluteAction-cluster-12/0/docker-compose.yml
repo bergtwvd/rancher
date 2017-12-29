@@ -29,7 +29,6 @@ services:
   environment:
   - DISPLAY=$XSERVER:0
   labels:
-  - "io.rancher.scheduler.affinity:host_label: node=app-docker12.hex.tno.nl"
   - "io.rancher.container.mac_address=00:18:8B:0D:4F:1B"
   depends_on: ["crc"]
 
@@ -75,4 +74,6 @@ services:
   - SERVER0=localhost 443 ssl basic_auth
   - SERVER0_LOCATION0="/dis/     proxy_pass http://diswebgw:8282/ upgrade"
   - SERVER0_LOCATION1="/         proxy_pass http://epic:7070"
+  labels:
+  - "io.rancher.scheduler.affinity:host_label: node=app-docker12.hex.tno.nl"
   depends_on: ["diswebgw","epic"]
