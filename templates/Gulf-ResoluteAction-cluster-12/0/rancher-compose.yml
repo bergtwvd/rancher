@@ -9,6 +9,3 @@
       type: "string"
       required: true
       default: xserver.xserver
-      
-crc:
-  scale: 1
