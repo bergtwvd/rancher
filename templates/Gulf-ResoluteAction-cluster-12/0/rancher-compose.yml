@@ -9,3 +9,9 @@
       type: "string"
       required: true
       default: xserver.xserver
+    - variable: "ADVERTISED_HOST"
+      label: "Full hostname wheren EPIC Service is advertised."
+      description: "E.g. app-docker12.hex.tno.nl"
+      type: "string"
+      required: true
+      default: app-docker12.hex.tno.nl
