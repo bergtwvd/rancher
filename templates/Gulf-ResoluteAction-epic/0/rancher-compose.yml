@@ -8,13 +8,13 @@
       description: "The format for the Rancher DNS name is '<servicename>.<stack>'."
       type: "string"
       required: true
-      default: crc
+      default: crc.crc
     - variable: "XSERVER"
       label: "DNS name of the XServer to be used."
       description: "The format for the Rancher DNS name is '<servicename>.<stack>'."
       type: "string"
       required: true
-      default: xserver
+      default: xserver.xserver
     - variable: "ADVERTISED_HOST"
       label: "Hostname where the EPIC Service will be advertised."
       description: "E.g. app-docker12.hex.tno.nl"
