@@ -25,5 +25,5 @@
       label: "Enable trace."
       description: "Non empty string."
       type: "string"
-      required: true
+      required: false
       default:
