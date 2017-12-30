@@ -50,16 +50,17 @@ services:
   labels:
   - "io.rancher.container.pull_image=always"
   
-# vrf:
-#  image: app-docker136.hex.tno.nl:443/msaas-nld/vrf:pi
-#  hostname: mak
-#  environment:
-#  - DISPLAY=$XSERVER:0
-#  - PITCH_CRCADDRESS=${CRC}:8989
-#  - PITCH_ENABLETRACE=${ENABLETRACE}
-#  labels:
-#    io.rancher.container.mac_address: 8C:70:5A:0B:58:7E
-#  depends_on: ["crc"]
+ vrf:
+  image: app-docker136.hex.tno.nl:443/msaas-nld/vrf:pi
+  hostname: mak
+  environment:
+  - DISPLAY=$XSERVER:0
+  - PITCH_CRCADDRESS=${CRC}:8989
+  - PITCH_ENABLETRACE=${ENABLETRACE}
+  labels:
+    io.rancher.container.mac_address: 8C:70:5A:0B:58:7E
+    io.rancher.container.pull_image: always
+  depends_on: ["crc"]
 
 # General components
  icon:
