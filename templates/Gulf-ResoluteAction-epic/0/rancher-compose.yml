@@ -21,3 +21,9 @@
       type: "string"
       required: true
       default: app-docker12.hex.tno.nl
+    - variable: "ENABLETRACE"
+      label: "Enable trace."
+      description: "Non empty string."
+      type: "string"
+      required: true
+      default:
