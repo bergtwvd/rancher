@@ -47,7 +47,9 @@ services:
   environment:
   - PITCH_CRCADDRESS=${CRC}:8989
   depends_on: ["crc", "icon"]
-
+  labels:
+  - "io.rancher.container.pull_image=always"
+  
 # vrf:
 #  image: app-docker136.hex.tno.nl:443/msaas-nld/vrf:pi
 #  hostname: mak
