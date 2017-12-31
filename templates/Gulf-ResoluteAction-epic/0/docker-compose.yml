@@ -24,7 +24,7 @@ services:
 #    io.rancher.container.mac_address: 00:18:8B:0D:4F:0B
   
  dis:
-  image: app-docker136.hex.tno.nl:443/pitch/dis:2.6.0L
+  image: app-docker136.hex.tno.nl:443/viking18/dis:2.6.0L
   command: -auto
   environment:
   - DISPLAY=$XSERVER:0
