@@ -1,14 +1,24 @@
 .catalog:
   name: "crc"
-  version: "5.3.0.0"
+  version: "5.3.2.1"
   description: "description"
   questions:
     - variable: "XSERVER"
-      label: "DNS name of the XServer to be used"
-      description: "The format for the DNS name is <servicename>.<stack>"
+      label: "DNS name of the XServer to be used."
+      description: "The format for the DNS name is '<servicename>.<stack>'."
       type: "string"
       required: true
       default: xserver.xserver
-
-crc:
+    - variable: "CRC_REJECT_MISMATCHED_VERSIONS"
+      label: "Reject LRCs with a miss-matching version."
+      description: "This a a bolean value. Default is true."
+      type: "boolean"
+      required: false
+      default: "true"
+    - variable: "CRC_BOOSTERADDRESS"
+      label: "Start in Booster Mode, using the given booster host address and port number. If left empty start in Direct Mode."
+      description: "The format for the Booster address is '<booster host>:<booster port>'."
+      type: "string"
+      required: false
+      default: ""
   scale: 1
